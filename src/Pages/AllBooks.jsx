@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Table, Spinner, Alert, Button, Stack } from "react-bootstrap";
+import {
+  Table,
+  Spinner,
+  Alert,
+  Button,
+  Stack,
+  Modal,
+  ModalBody,
+  ModalFooter,
+} from "react-bootstrap";
 import { FaPen, FaTrash } from "react-icons/fa";
 import axios from "axios";
 import "./AllBooks.css";
 import EditableForm from "../Components/EditableForm";
+import DeleteBook from "../Components/DeleteBook";
 
 function Allbooks() {
   const btn_style = "shadow p-1 px-sm-2 px-md-2 py-md-1";
@@ -12,35 +22,40 @@ function Allbooks() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [editingBookId, setEditingBookId] = useState(null);
-  const [deletingBookId, setDeletingBookId] = useState(null);
-
+  const [deletingBookId, setDeletingBook] = useState(null);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [show, setShow] = useState(false);
+  const getAllBooks = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`http://localhost:3000/Allbooks`);
+      const data = response.data;
+      setAllBooks(data);
+    } catch (err) {
+      setError("Failed to load books. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const getAllBooks = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(`http://localhost:3000/Allbooks`);
-        const data = response.data;
-        setAllBooks(data);
-      } catch (err) {
-        setError("Failed to load books. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    };
     getAllBooks();
   }, []);
 
-  const handleUpdate = () => {
-    setEditingBookId(null);
+  const handleUpdate = (bookId) => {
+    setEditingBookId(bookId);
+    setShow(true);
+    getAllBooks();
   };
-
-  const handleDelete = () => {
-    setDeletingBookId(null);
+  const handleDelete = (book) => {
+    setDeletingBook(book);
+    setDeleteModal(true);
   };
 
   return (
     <div style={{ padding: "1rem", backgroundColor: "#e5e7eb" }}>
-      <h1 className="text-primary fw-bolder text-center font-monospace ">All Books</h1>
+      <h1 className="text-primary fw-bolder text-center font-monospace ">
+        All Books
+      </h1>
       {loading ? (
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
@@ -98,7 +113,7 @@ function Allbooks() {
             </thead>
             <tbody>
               {allBooks?.map((book, idx) => (
-                <tr key={book.bookId}>
+                <tr key={book.id}>
                   <td className="text-center">{idx + 1}</td>
                   <td className={`table-cell-title ellipsis text-wrap`}>
                     {book?.title}
@@ -111,14 +126,14 @@ function Allbooks() {
                       <Button
                         className={`${btn_style}`}
                         variant="primary"
-                        onClick={() => setEditingBookId(book.bookId)}
+                        onClick={() => handleUpdate(book.id)}
                       >
                         <FaPen style={{ cursor: "pointer" }} />
                       </Button>
                       <Button
                         className={`${btn_style}`}
                         variant="danger"
-                        onClick={() => setDeletingBookId(book.bookId)}
+                        onClick={() => handleDelete(book)}
                       >
                         <FaTrash
                           size={"1.1rem"}
@@ -137,21 +152,25 @@ function Allbooks() {
               ))}
             </tbody>
           </Table>
-          {editingBookId && (
+          {show && (
             <EditableForm
+              show={show}
+              setShow={setShow}
               bookId={editingBookId}
               onUpdate={handleUpdate}
               onCancel={() => setEditingBookId(null)}
             />
           )}
 
-          {/* {deletingBookId && (
+          {deleteModal && (
             <DeleteBook
+              show={deleteModal}
+              setShow={setDeleteModal}
               bookId={deletingBookId}
-              onDelete={handleDelete}
-              onCancel={() => setDeletingBookId(null)}
+              onDelete={getAllBooks}
+              onCancel={() => setDeletingBook(null)}
             />
-          )} */}
+          )}
         </>
       )}
     </div>

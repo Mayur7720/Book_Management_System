@@ -1,18 +1,7 @@
 {
   "Allbooks": [
     {
-      "bookId": "1",
-      "price": 19.99,
-      "author": "George Orwell",
-      "publishedDate": "1949-06-08",
-      "publisher": "Secker & Warburg",
-      "overview": "A dystopian novel set in a totalitarian society under constant surveillance.",
-      "title": "1984",
-      "description": "The story of Winston Smith's fight against the Party's oppressive control.",
-      "image": "https://example.com/images/1984.jpg"
-    },
-    {
-      "bookId": "2",
+      "id": "2",
       "price": 15.5,
       "author": "Harper Lee",
       "publishedDate": "1960-07-11",
@@ -23,7 +12,7 @@
       "image": "https://example.com/images/to_kill_a_mockingbird.jpg"
     },
     {
-      "bookId": "3",
+      "id": "3",
       "price": 22.99,
       "author": "J.K. Rowling",
       "publishedDate": "1997-06-26",
@@ -34,7 +23,7 @@
       "image": "https://example.com/images/harry_potter1.jpg"
     },
     {
-      "bookId": "4",
+      "id": "4",
       "price": 18.75,
       "author": "F. Scott Fitzgerald",
       "publishedDate": "1925-04-10",
@@ -45,7 +34,7 @@
       "image": "https://example.com/images/great_gatsby.jpg"
     },
     {
-      "bookId": "5",
+      "id": "5",
       "price": 13.4,
       "author": "Mary Shelley",
       "publishedDate": "1818-01-01",
@@ -56,8 +45,8 @@
       "image": "https://example.com/images/frankenstein.jpg"
     },
     {
-      "bookId": "6",
-      "price": 20.0,
+      "id": "6",
+      "price": 20,
       "author": "Herman Melville",
       "publishedDate": "1851-10-18",
       "publisher": "Harper & Brothers",
@@ -67,7 +56,7 @@
       "image": "https://example.com/images/moby_dick.jpg"
     },
     {
-      "bookId": "7",
+      "id": "7",
       "price": 11.99,
       "author": "Jane Austen",
       "publishedDate": "1813-01-28",
@@ -78,7 +67,7 @@
       "image": "https://example.com/images/pride_and_prejudice.jpg"
     },
     {
-      "bookId": "8",
+      "id": "8",
       "price": 16.99,
       "author": "J.R.R. Tolkien",
       "publishedDate": "1954-07-29",
@@ -89,8 +78,8 @@
       "image": "https://example.com/images/fellowship_of_the_ring.jpg"
     },
     {
-      "bookId": "9",
-      "price": 14.0,
+      "id": "9",
+      "price": 14,
       "author": "Mark Twain",
       "publishedDate": "1884-12-10",
       "publisher": "Chatto & Windus / Charles L. Webster And Company",
@@ -100,7 +89,7 @@
       "image": "https://example.com/images/huck_finn.jpg"
     },
     {
-      "bookId": "10",
+      "id": "10",
       "price": 24.99,
       "author": "Leo Tolstoy",
       "publishedDate": "1869-01-01",
@@ -111,8 +100,8 @@
       "image": "https://example.com/images/war_and_peace.jpg"
     },
     {
-      "bookId": "11",
-      "price": 18.0,
+      "id": "11",
+      "price": 18,
       "author": "Emily Brontë",
       "publishedDate": "1847-12-01",
       "publisher": "Thomas Cautley Newby",
@@ -122,7 +111,7 @@
       "image": "https://example.com/images/wuthering_heights.jpg"
     },
     {
-      "bookId": "12",
+      "id": "12",
       "price": 12.5,
       "author": "Aldous Huxley",
       "publishedDate": "1932-01-01",
@@ -133,7 +122,7 @@
       "image": "https://example.com/images/brave_new_world.jpg"
     },
     {
-      "bookId": "13",
+      "id": "13",
       "price": 21.5,
       "author": "Ernest Hemingway",
       "publishedDate": "1952-09-01",
@@ -144,7 +133,7 @@
       "image": "https://example.com/images/old_man_and_sea.jpg"
     },
     {
-      "bookId": "14",
+      "id": "14",
       "price": 17.75,
       "author": "Kurt Vonnegut",
       "publishedDate": "1969-03-01",
@@ -155,7 +144,7 @@
       "image": "https://example.com/images/slaughterhouse_five.jpg"
     },
     {
-      "bookId": "15",
+      "id": "15",
       "price": 22.99,
       "author": "Gabriel García Márquez",
       "publishedDate": "1967-05-01",
@@ -166,7 +155,7 @@
       "image": "https://example.com/images/one_hundred_years_of_solitude.jpg"
     },
     {
-      "bookId": "16",
+      "id": "16",
       "price": 19.99,
       "author": "George Orwell",
       "publishedDate": "1949-06-08",
@@ -177,7 +166,7 @@
       "image": "https://example.com/images/1984.jpg"
     },
     {
-      "bookId": "17",
+      "id": "17",
       "price": 15.5,
       "author": "Harper Lee",
       "publishedDate": "1960-07-11",
@@ -188,7 +177,7 @@
       "image": "https://example.com/images/to_kill_a_mockingbird.jpg"
     },
     {
-      "bookId": "18",
+      "id": "18",
       "price": 22.99,
       "author": "J.K. Rowling",
       "publishedDate": "1997-06-26",
@@ -199,7 +188,7 @@
       "image": "https://example.com/images/harry_potter1.jpg"
     },
     {
-      "bookId": "19",
+      "id": "19",
       "price": 18.75,
       "author": "F. Scott Fitzgerald",
       "publishedDate": "1925-04-10",
@@ -210,7 +199,7 @@
       "image": "https://example.com/images/great_gatsby.jpg"
     },
     {
-      "bookId": "20",
+      "id": "20",
       "price": 13.4,
       "author": "Mary Shelley",
       "publishedDate": "1818-01-01",
@@ -221,8 +210,8 @@
       "image": "https://example.com/images/frankenstein.jpg"
     },
     {
-      "bookId": "21",
-      "price": 20.0,
+      "id": "21",
+      "price": 20,
       "author": "Herman Melville",
       "publishedDate": "1851-10-18",
       "publisher": "Harper & Brothers",
@@ -232,7 +221,7 @@
       "image": "https://example.com/images/moby_dick.jpg"
     },
     {
-      "bookId": "22",
+      "id": "22",
       "price": 11.99,
       "author": "Jane Austen",
       "publishedDate": "1813-01-28",
@@ -243,7 +232,7 @@
       "image": "https://example.com/images/pride_and_prejudice.jpg"
     },
     {
-      "bookId": "23",
+      "id": "23",
       "price": 16.99,
       "author": "J.R.R. Tolkien",
       "publishedDate": "1954-07-29",
@@ -254,8 +243,8 @@
       "image": "https://example.com/images/fellowship_of_the_ring.jpg"
     },
     {
-      "bookId": "24",
-      "price": 14.0,
+      "id": "24",
+      "price": 14,
       "author": "Mark Twain",
       "publishedDate": "1884-12-10",
       "publisher": "Chatto & Windus / Charles L. Webster And Company",
@@ -265,7 +254,7 @@
       "image": "https://example.com/images/huck_finn.jpg"
     },
     {
-      "bookId": "25",
+      "id": "25",
       "price": 24.99,
       "author": "Leo Tolstoy",
       "publishedDate": "1869-01-01",
@@ -276,8 +265,8 @@
       "image": "https://example.com/images/war_and_peace.jpg"
     },
     {
-      "bookId": "26",
-      "price": 18.0,
+      "id": "26",
+      "price": 18,
       "author": "Emily Brontë",
       "publishedDate": "1847-12-01",
       "publisher": "Thomas Cautley Newby",
@@ -287,7 +276,7 @@
       "image": "https://example.com/images/wuthering_heights.jpg"
     },
     {
-      "bookId": "27",
+      "id": "27",
       "price": 12.5,
       "author": "Aldous Huxley",
       "publishedDate": "1932-01-01",
@@ -298,7 +287,7 @@
       "image": "https://example.com/images/brave_new_world.jpg"
     },
     {
-      "bookId": "28",
+      "id": "28",
       "price": 21.5,
       "author": "Ernest Hemingway",
       "publishedDate": "1952-09-01",
@@ -309,7 +298,7 @@
       "image": "https://example.com/images/old_man_and_sea.jpg"
     },
     {
-      "bookId": "29",
+      "id": "29",
       "price": 17.75,
       "author": "Kurt Vonnegut",
       "publishedDate": "1969-03-01",
@@ -320,7 +309,7 @@
       "image": "https://example.com/images/slaughterhouse_five.jpg"
     },
     {
-      "bookId": "30",
+      "id": "30",
       "price": 22.99,
       "author": "Gabriel García Márquez",
       "publishedDate": "1967-05-01",
@@ -331,7 +320,7 @@
       "image": "https://example.com/images/one_hundred_years_of_solitude.jpg"
     },
     {
-      "bookId": "31",
+      "id": "31",
       "price": 14.99,
       "author": "Margaret Atwood",
       "publishedDate": "1985-04-17",
@@ -342,7 +331,7 @@
       "image": "https://example.com/images/handmaids_tale.jpg"
     },
     {
-      "bookId": "40",
+      "id": "40",
       "price": 16.99,
       "author": "Ray Bradbury",
       "publishedDate": "1953-10-19",
