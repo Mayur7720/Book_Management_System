@@ -1,8 +1,31 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Book Inventory Management System
 
-Currently, two official plugins are available:
+This application allows users to manage a book inventory with basic CRUD operations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Features
+
+- View all inventory books in a tabular format.
+- Perform CRUD operations:
+  - **Create** new book entries.
+  - **Read** details of specific books.
+  - **Update** existing book details.
+  - **Delete** books from the inventory.
+- Navigate between different routes in the application.
+
+### Commands
+
+To run the project, split your terminal into two parts:
+
+- **1st Terminal**: Start the React application
+
+  ```bash
+  npm run dev
+
+  ```
+
+- **2nd Terminal**: Start the JSON server (using db.json as the database)
+  ```bash
+  npx json-server db.json
+  ```

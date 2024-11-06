@@ -9,18 +9,20 @@
       "overview": "A dystopian novel set in a totalitarian society under constant surveillance.",
       "title": "1984",
       "description": "The story of Winston Smith's fight against the Party's oppressive control.",
-      "image": "https://example.com/images/1984.jpg"
+      "image": "https://example.com/images/1984.jpg",
+      "id": "c3ee"
     },
     {
       "bookId": "2",
-      "price": 15.50,
+      "price": 15.5,
       "author": "Harper Lee",
       "publishedDate": "1960-07-11",
       "publisher": "J.B. Lippincott & Co.",
       "overview": "A classic American novel exploring themes of racial injustice in the Deep South.",
       "title": "To Kill a Mockingbird",
       "description": "Scout Finch narrates her childhood experiences growing up in a racially divided town.",
-      "image": "https://example.com/images/to_kill_a_mockingbird.jpg"
+      "image": "https://example.com/images/to_kill_a_mockingbird.jpg",
+      "id": "9a77"
     },
     {
       "bookId": "3",
@@ -31,7 +33,8 @@
       "overview": "The first novel in the Harry Potter series, introducing Harry's journey into the wizarding world.",
       "title": "Harry Potter and the Philosopher's Stone",
       "description": "Harry discovers his true identity as a wizard and attends Hogwarts School of Witchcraft and Wizardry.",
-      "image": "https://example.com/images/harry_potter1.jpg"
+      "image": "https://example.com/images/harry_potter1.jpg",
+      "id": "1ecb"
     },
     {
       "bookId": "4",
@@ -42,29 +45,32 @@
       "overview": "A novel that critiques the American Dream in the Jazz Age.",
       "title": "The Great Gatsby",
       "description": "Nick Carraway observes the mysterious life of his neighbor, Jay Gatsby.",
-      "image": "https://example.com/images/great_gatsby.jpg"
+      "image": "https://example.com/images/great_gatsby.jpg",
+      "id": "d424"
     },
     {
       "bookId": "5",
-      "price": 13.40,
+      "price": 13.4,
       "author": "Mary Shelley",
       "publishedDate": "1818-01-01",
       "publisher": "Lackington, Hughes, Harding, Mavor & Jones",
       "overview": "A Gothic novel about the tragic consequences of man's pursuit of knowledge.",
       "title": "Frankenstein",
       "description": "Victor Frankenstein creates a monster in his quest for scientific knowledge.",
-      "image": "https://example.com/images/frankenstein.jpg"
+      "image": "https://example.com/images/frankenstein.jpg",
+      "id": "7e44"
     },
     {
       "bookId": "6",
-      "price": 20.00,
+      "price": 20,
       "author": "Herman Melville",
       "publishedDate": "1851-10-18",
       "publisher": "Harper & Brothers",
       "overview": "A tale of obsession and revenge, set in the world of whaling.",
       "title": "Moby-Dick",
       "description": "Captain Ahab seeks vengeance on the white whale that injured him.",
-      "image": "https://example.com/images/moby_dick.jpg"
+      "image": "https://example.com/images/moby_dick.jpg",
+      "id": "7c9a"
     },
     {
       "bookId": "7",
@@ -75,7 +81,8 @@
       "overview": "A romance novel exploring the manners and matrimonial machinations of British society.",
       "title": "Pride and Prejudice",
       "description": "Elizabeth Bennet navigates society and her feelings for Mr. Darcy.",
-      "image": "https://example.com/images/pride_and_prejudice.jpg"
+      "image": "https://example.com/images/pride_and_prejudice.jpg",
+      "id": "21c9"
     },
     {
       "bookId": "8",
@@ -86,18 +93,20 @@
       "overview": "The first book in the epic Lord of the Rings trilogy.",
       "title": "The Fellowship of the Ring",
       "description": "Frodo Baggins embarks on a perilous journey to destroy the One Ring.",
-      "image": "https://example.com/images/fellowship_of_the_ring.jpg"
+      "image": "https://example.com/images/fellowship_of_the_ring.jpg",
+      "id": "4485"
     },
     {
       "bookId": "9",
-      "price": 14.00,
+      "price": 14,
       "author": "Mark Twain",
       "publishedDate": "1884-12-10",
       "publisher": "Chatto & Windus / Charles L. Webster And Company",
       "overview": "A young boy's adventures on the Mississippi River, challenging societal norms.",
       "title": "Adventures of Huckleberry Finn",
       "description": "Huck Finn escapes his abusive father and travels with Jim, a runaway slave.",
-      "image": "https://example.com/images/huck_finn.jpg"
+      "image": "https://example.com/images/huck_finn.jpg",
+      "id": "bc79"
     },
     {
       "bookId": "10",
@@ -108,40 +117,44 @@
       "overview": "A historical novel set during the Napoleonic Wars in Russia.",
       "title": "War and Peace",
       "description": "Explores the lives of various characters against the backdrop of Russian society.",
-      "image": "https://example.com/images/war_and_peace.jpg"
+      "image": "https://example.com/images/war_and_peace.jpg",
+      "id": "26cf"
     },
     {
       "bookId": "11",
-      "price": 18.00,
+      "price": 18,
       "author": "Emily Brontë",
       "publishedDate": "1847-12-01",
       "publisher": "Thomas Cautley Newby",
       "overview": "A dark tale of passion and revenge on the Yorkshire moors.",
       "title": "Wuthering Heights",
       "description": "The tempestuous love story of Heathcliff and Catherine Earnshaw.",
-      "image": "https://example.com/images/wuthering_heights.jpg"
+      "image": "https://example.com/images/wuthering_heights.jpg",
+      "id": "4cf4"
     },
     {
       "bookId": "12",
-      "price": 12.50,
+      "price": 12.5,
       "author": "Aldous Huxley",
       "publishedDate": "1932-01-01",
       "publisher": "Chatto & Windus",
       "overview": "A dystopian novel exploring a technologically advanced future society.",
       "title": "Brave New World",
       "description": "Examines the potential consequences of technological advancements on society.",
-      "image": "https://example.com/images/brave_new_world.jpg"
+      "image": "https://example.com/images/brave_new_world.jpg",
+      "id": "418a"
     },
     {
       "bookId": "13",
-      "price": 21.50,
+      "price": 21.5,
       "author": "Ernest Hemingway",
       "publishedDate": "1952-09-01",
       "publisher": "Charles Scribner's Sons",
       "overview": "An epic story of struggle and perseverance by an old fisherman.",
       "title": "The Old Man and the Sea",
       "description": "Santiago battles a giant marlin in the Gulf Stream.",
-      "image": "https://example.com/images/old_man_and_sea.jpg"
+      "image": "https://example.com/images/old_man_and_sea.jpg",
+      "id": "8ac0"
     },
     {
       "bookId": "14",
@@ -152,7 +165,8 @@
       "overview": "A satire of war, focusing on the bombing of Dresden during WWII.",
       "title": "Slaughterhouse-Five",
       "description": "Billy Pilgrim becomes unstuck in time and reflects on the horrors of war.",
-      "image": "https://example.com/images/slaughterhouse_five.jpg"
+      "image": "https://example.com/images/slaughterhouse_five.jpg",
+      "id": "c73f"
     },
     {
       "bookId": "15",
@@ -163,7 +177,8 @@
       "overview": "A magical realism novel following the Buendía family's generational story.",
       "title": "One Hundred Years of Solitude",
       "description": "Explores themes of love, power, and the cyclic nature of history.",
-      "image": "https://example.com/images/one_hundred_years_of_solitude.jpg"
+      "image": "https://example.com/images/one_hundred_years_of_solitude.jpg",
+      "id": "0f94"
     },
     {
       "bookId": "16",
@@ -174,18 +189,20 @@
       "overview": "A dystopian novel set in a totalitarian society under constant surveillance.",
       "title": "1984",
       "description": "The story of Winston Smith's fight against the Party's oppressive control.",
-      "image": "https://example.com/images/1984.jpg"
+      "image": "https://example.com/images/1984.jpg",
+      "id": "6d86"
     },
     {
       "bookId": "17",
-      "price": 15.50,
+      "price": 15.5,
       "author": "Harper Lee",
       "publishedDate": "1960-07-11",
       "publisher": "J.B. Lippincott & Co.",
       "overview": "A classic American novel exploring themes of racial injustice in the Deep South.",
       "title": "To Kill a Mockingbird",
       "description": "Scout Finch narrates her childhood experiences growing up in a racially divided town.",
-      "image": "https://example.com/images/to_kill_a_mockingbird.jpg"
+      "image": "https://example.com/images/to_kill_a_mockingbird.jpg",
+      "id": "d1b9"
     },
     {
       "bookId": "18",
@@ -196,7 +213,8 @@
       "overview": "The first novel in the Harry Potter series, introducing Harry's journey into the wizarding world.",
       "title": "Harry Potter and the Philosopher's Stone",
       "description": "Harry discovers his true identity as a wizard and attends Hogwarts School of Witchcraft and Wizardry.",
-      "image": "https://example.com/images/harry_potter1.jpg"
+      "image": "https://example.com/images/harry_potter1.jpg",
+      "id": "cf59"
     },
     {
       "bookId": "19",
@@ -207,29 +225,32 @@
       "overview": "A novel that critiques the American Dream in the Jazz Age.",
       "title": "The Great Gatsby",
       "description": "Nick Carraway observes the mysterious life of his neighbor, Jay Gatsby.",
-      "image": "https://example.com/images/great_gatsby.jpg"
+      "image": "https://example.com/images/great_gatsby.jpg",
+      "id": "e905"
     },
     {
       "bookId": "20",
-      "price": 13.40,
+      "price": 13.4,
       "author": "Mary Shelley",
       "publishedDate": "1818-01-01",
       "publisher": "Lackington, Hughes, Harding, Mavor & Jones",
       "overview": "A Gothic novel about the tragic consequences of man's pursuit of knowledge.",
       "title": "Frankenstein",
       "description": "Victor Frankenstein creates a monster in his quest for scientific knowledge.",
-      "image": "https://example.com/images/frankenstein.jpg"
+      "image": "https://example.com/images/frankenstein.jpg",
+      "id": "4b8e"
     },
     {
       "bookId": "21",
-      "price": 20.00,
+      "price": 20,
       "author": "Herman Melville",
       "publishedDate": "1851-10-18",
       "publisher": "Harper & Brothers",
       "overview": "A tale of obsession and revenge, set in the world of whaling.",
       "title": "Moby-Dick",
       "description": "Captain Ahab seeks vengeance on the white whale that injured him.",
-      "image": "https://example.com/images/moby_dick.jpg"
+      "image": "https://example.com/images/moby_dick.jpg",
+      "id": "b0c5"
     },
     {
       "bookId": "22",
@@ -240,7 +261,8 @@
       "overview": "A romance novel exploring the manners and matrimonial machinations of British society.",
       "title": "Pride and Prejudice",
       "description": "Elizabeth Bennet navigates society and her feelings for Mr. Darcy.",
-      "image": "https://example.com/images/pride_and_prejudice.jpg"
+      "image": "https://example.com/images/pride_and_prejudice.jpg",
+      "id": "b8ed"
     },
     {
       "bookId": "23",
@@ -251,18 +273,20 @@
       "overview": "The first book in the epic Lord of the Rings trilogy.",
       "title": "The Fellowship of the Ring",
       "description": "Frodo Baggins embarks on a perilous journey to destroy the One Ring.",
-      "image": "https://example.com/images/fellowship_of_the_ring.jpg"
+      "image": "https://example.com/images/fellowship_of_the_ring.jpg",
+      "id": "d506"
     },
     {
       "bookId": "24",
-      "price": 14.00,
+      "price": 14,
       "author": "Mark Twain",
       "publishedDate": "1884-12-10",
       "publisher": "Chatto & Windus / Charles L. Webster And Company",
       "overview": "A young boy's adventures on the Mississippi River, challenging societal norms.",
       "title": "Adventures of Huckleberry Finn",
       "description": "Huck Finn escapes his abusive father and travels with Jim, a runaway slave.",
-      "image": "https://example.com/images/huck_finn.jpg"
+      "image": "https://example.com/images/huck_finn.jpg",
+      "id": "a946"
     },
     {
       "bookId": "25",
@@ -273,29 +297,32 @@
       "overview": "A historical novel set during the Napoleonic Wars in Russia.",
       "title": "War and Peace",
       "description": "Explores the lives of various characters against the backdrop of Russian society.",
-      "image": "https://example.com/images/war_and_peace.jpg"
+      "image": "https://example.com/images/war_and_peace.jpg",
+      "id": "8743"
     },
     {
       "bookId": "26",
-      "price": 18.00,
+      "price": 18,
       "author": "Emily Brontë",
       "publishedDate": "1847-12-01",
       "publisher": "Thomas Cautley Newby",
       "overview": "A dark tale of passion and revenge on the Yorkshire moors.",
       "title": "Wuthering Heights",
       "description": "The tempestuous love story of Heathcliff and Catherine Earnshaw.",
-      "image": "https://example.com/images/wuthering_heights.jpg"
+      "image": "https://example.com/images/wuthering_heights.jpg",
+      "id": "6deb"
     },
     {
       "bookId": "27",
-      "price": 12.50,
+      "price": 12.5,
       "author": "Aldous Huxley",
       "publishedDate": "1932-01-01",
       "publisher": "Chatto & Windus",
       "overview": "A dystopian novel exploring a technologically advanced future society.",
       "title": "Brave New World",
       "description": "Examines the potential consequences of technological advancements on society.",
-      "image": "https://example.com/images/brave_new_world.jpg"
+      "image": "https://example.com/images/brave_new_world.jpg",
+      "id": "8ee5"
     },
     {
       "bookId": "40",
@@ -306,7 +333,8 @@
       "overview": "A dystopian novel about a future society where books are banned.",
       "title": "Fahrenheit 451",
       "description": "Fireman Guy Montag learns the importance of knowledge and free thought.",
-      "image": "https://example.com/images/fahrenheit_451.jpg"
+      "image": "https://example.com/images/fahrenheit_451.jpg",
+      "id": "a2d0"
     }
   ]
 }
