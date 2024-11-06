@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {
-  Table,
-  Spinner,
-  Alert,
-  Button,
-  Stack,
-  Modal,
-  ModalBody,
-  ModalFooter,
-} from "react-bootstrap";
-import { FaPen, FaTrash } from "react-icons/fa";
+import { Table, Spinner, Alert, Button, Stack, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { FaPen, FaTrash, FaPlus } from "react-icons/fa";
 import axios from "axios";
 import "./AllBooks.css";
 import EditableForm from "../Components/EditableForm";
@@ -17,6 +9,7 @@ import DeleteBook from "../Components/DeleteBook";
 
 function Allbooks() {
   const btn_style = "shadow p-1 px-sm-2 px-md-2 py-md-1";
+  const table_head = "p-3 text-secondary`}";
 
   const [allBooks, setAllBooks] = useState([]);
   const [error, setError] = useState("");
@@ -25,18 +18,19 @@ function Allbooks() {
   const [deletingBookId, setDeletingBook] = useState(null);
   const [deleteModal, setDeleteModal] = useState(false);
   const [show, setShow] = useState(false);
+
   const getAllBooks = async () => {
     try {
       setLoading(true);
       const response = await axios.get(`http://localhost:3000/Allbooks`);
-      const data = response.data;
-      setAllBooks(data);
+      setAllBooks(response.data);
     } catch (err) {
       setError("Failed to load books. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     getAllBooks();
   }, []);
@@ -44,11 +38,16 @@ function Allbooks() {
   const handleUpdate = (bookId) => {
     setEditingBookId(bookId);
     setShow(true);
-    getAllBooks();
   };
+
   const handleDelete = (book) => {
     setDeletingBook(book);
     setDeleteModal(true);
+  };
+
+  const handleAddNewBook = () => {
+    setEditingBookId(null);
+    setShow(true);
   };
 
   return (
@@ -56,6 +55,15 @@ function Allbooks() {
       <h1 className="text-primary fw-bolder text-center font-monospace ">
         All Books
       </h1>
+      <div className="text-end mt-3 mb-1">
+        <Button
+          variant="success"
+          onClick={handleAddNewBook}
+          className="shadow fw-semibold mb-3 p-2"
+        >
+          <FaPlus className="mb-1" /> New Book
+        </Button>
+      </div>
       {loading ? (
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
@@ -72,107 +80,74 @@ function Allbooks() {
               borderRadius: "1rem",
               overflow: "hidden",
             }}
-            className="custom-font-size borded  shadow-lg "
+            className="custom-font-size borded shadow-lg "
           >
-            <thead className="border-black">
+            <thead>
               <tr>
-                <th
-                  style={{ width: "3rem", padding: "1rem" }}
-                  className=" text-center table_head"
-                >
-                  #
-                </th>
-                <th
-                  style={{ padding: "1rem" }}
-                  className="text-truncate w-25 text-wrap  table_head"
-                >
-                  Book Name
-                </th>
-                <th style={{ padding: "1rem" }} className=" table_head">
-                  Author
-                </th>
-                <th
-                  style={{ padding: "1rem" }}
-                  className="text-truncate w-25 table_head"
-                >
-                  Summary
-                </th>
-                <th
-                  style={{ padding: "1rem" }}
-                  className="text-center  table_head"
-                >
-                  Price
-                </th>
-                <th
-                  style={{ padding: "1rem" }}
-                  className="px-0 text-center px-0 table_head"
-                >
-                  Actions
-                </th>
+                <th className={`${table_head}`}>#</th>
+                <th className={`${table_head}`}>Book Name</th>
+                <th className={`${table_head}`}>Author</th>
+                <th className={`${table_head}`}>Summary</th>
+                <th className={`${table_head} `}>Price</th>
+                <th className={`${table_head} text-center`}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {allBooks?.map((book, idx) => (
                 <tr key={book.id}>
-                  <td className="text-center">{idx + 1}</td>
-                  <td className={`table-cell-title ellipsis text-wrap`}>
-                    {book?.title}
-                  </td>
-                  <td>{book?.author}</td>
-                  <td className={` `}>{book?.overview}</td>
-                  <td className="text-center">${book?.price}</td>
-                  <td className=" px-0  ">
-                    <Stack className=" gap-2 d-flex justify-content-center align-items-center bg-transparent flex-md-row px-sm-1 bg-white border-0 ">
+                  <td>{idx + 1}</td>
+                  <td>{book.title}</td>
+                  <td>{book.author}</td>
+                  <td>{book.overview}</td>
+                  <td>${book.price}</td>
+                  <td>
+                    <Stack className="gap-2 d-flex justify-content-center align-items-center bg-bg-transparent flex-md-row ">
                       <Button
-                        className={`${btn_style}`}
+                        className={btn_style}
                         variant="primary"
                         onClick={() => handleUpdate(book.id)}
                       >
-                        <FaPen style={{ cursor: "pointer" }} />
+                        <FaPen />
                       </Button>
                       <Button
-                        className={`${btn_style}`}
+                        className={btn_style}
                         variant="danger"
                         onClick={() => handleDelete(book)}
                       >
-                        <FaTrash
-                          size={"1.1rem"}
-                          style={{ cursor: "pointer" }}
-                        />
+                        <FaTrash />
                       </Button>
-                      <Button
-                        className={`${btn_style} text-center px-2 `}
-                        variant="secondary"
-                      >
-                        info
-                      </Button>
+                      <Link to={`/allbooks/${book.id}`}>
+                        <Button
+                          className={`${btn_style} fw-semibold`}
+                          variant="secondary"
+                        >
+                          Info
+                        </Button>
+                      </Link>
                     </Stack>
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
-          {show && (
-            <EditableForm
-              show={show}
-              setShow={setShow}
-              bookId={editingBookId}
-              onUpdate={handleUpdate}
-              onCancel={() => setEditingBookId(null)}
-            />
-          )}
-
-          {deleteModal && (
-            <DeleteBook
-              show={deleteModal}
-              setShow={setDeleteModal}
-              bookId={deletingBookId}
-              onDelete={getAllBooks}
-              onCancel={() => setDeletingBook(null)}
-            />
-          )}
         </>
       )}
+
+      <EditableForm
+        show={show}
+        setShow={setShow}
+        bookId={editingBookId}
+        onUpdate={getAllBooks}
+        onCancel={() => setShow(false)}
+      />
+
+      <DeleteBook
+        show={deleteModal}
+        setShow={setDeleteModal}
+        bookId={deletingBookId}
+        onDelete={getAllBooks}
+        onCancel={() => setDeleteModal(false)}
+      />
     </div>
   );
 }

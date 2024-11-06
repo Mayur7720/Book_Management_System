@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 import {
   Button,
-  Alert,
   Modal,
   ModalBody,
   ModalFooter,
-  ModalTitle,
   ModalHeader,
-  ModalDialog,
+  ModalTitle
 } from "react-bootstrap";
 function DeleteBook({ show, setShow, bookId, onDelete }) {
   const [error, setError] = useState("");

@@ -1,20 +1,23 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  Modal,
+  Alert,
   Button,
   Form,
-  Alert,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalTitle,
-  ModalHeader,
-  InputGroup,
+  ToastContainer,
+  Toast,
+  ToastHeader,
+  ToastBody,
 } from "react-bootstrap";
-import { FaRegCalendarAlt } from "react-icons/fa";
 import axios from "axios";
 
-function EditableForm({ bookId, onUpdate, onCancel, show, setShow }) {
-  const [book, setBook] = useState({
+const EditableForm = ({ show, setShow, bookId, onUpdate, onCancel }) => {
+  const [errors, setErrors] = useState({});
+  const [showAlert, setShowAlert] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [showToast, setShowToast] = useState(false);
+
+  const [bookData, setBookData] = useState({
     title: "",
     author: "",
     overview: "",
@@ -22,193 +25,229 @@ function EditableForm({ bookId, onUpdate, onCancel, show, setShow }) {
     description: "",
     publishedDate: "",
   });
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
 
-  const handleClose = () => setShow(false);
   useEffect(() => {
-    const fetchBook = async () => {
-      try {
-        console.log(bookId);
+    const fetchBookDetails = async () => {
+      if (bookId) {
         const response = await axios.get(
           `http://localhost:3000/Allbooks/${bookId}`
         );
-        setBook(response.data);
-      } catch (err) {
-        setError("Failed to load book details.");
-      } finally {
-        setLoading(false);
+        setBookData(response.data);
+      } else {
+        setBookData({
+          title: "",
+          author: "",
+          overview: "",
+          price: "",
+          description: "",
+          publishedDate: "",
+        });
       }
     };
 
-    fetchBook();
+    fetchBookDetails();
   }, [bookId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBook((prev) => ({ ...prev, [name]: value }));
+    setBookData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const validateForm = () => {
+    let formErrors = {};
+
+    if (!bookData.title || bookData.title.trim() === "") {
+      formErrors.title = "Title is //required.";
+    }
+    if (!bookData.description || bookData.description.trim() === "") {
+      formErrors.description = "description is //required.";
+    }
+    if (!bookData.overview || bookData.overview.trim() === "") {
+      formErrors.overview = "overview is //required.";
+    }
+    if (!bookData.price || isNaN(bookData.price) || bookData.price <= 0) {
+      formErrors.price = "Price must be a valid positive number.";
+    }
+    if (!bookData.author || bookData.author.trim() === "") {
+      formErrors.author = "Author is //required.";
+    }
+    if (!bookData.publishedDate || isNaN(Date.parse(bookData.publishedDate))) {
+      formErrors.publishedDate = "Published date must be a valid date.";
+    }
+
+    setErrors(formErrors);
+    return Object.keys(formErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      setShowAlert(true);
+      return;
+    }
+
     try {
-      await axios.patch(`http://localhost:3000/Allbooks/${bookId}`, book);
+      if (bookId) {
+        await axios.put(`http://localhost:3000/Allbooks/${bookId}`, bookData);
+        setToastMessage("Book updated successfully!");
+      } else {
+        await axios.post(`http://localhost:3000/Allbooks`, bookData);
+        setToastMessage("Book added successfully!");
+      }
       onUpdate();
       setShow(false);
+      setShowToast(true);
+
     } catch (err) {
-      setError("Failed to update book.");
+      console.error("Failed to save book details:", err);
     }
   };
 
   return (
-    <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <Alert variant="danger">{error}</Alert>
-      ) : (
-        <Modal
-          size="lg"
-          show={show}
-          onHide={handleClose}
-          aria-labelledby="example-modal-sizes-title-sm"
+    <>
+      {" "}
+      <Modal size="lg" show={show} onHide={() => setShow(false)}>
+        <Modal.Header
+          className={`${
+            bookId
+              ? " bg-primary text-white "
+              : " bg-success border-0 text-white"
+          }`}
+          closeButton
         >
-          <ModalHeader closeButton>
-            <ModalTitle>Edit Book Details</ModalTitle>
-          </ModalHeader>
-          <ModalBody>
-            <Form onSubmit={handleSubmit}>
-              <div className="d-flex flex-column flex-sm-row justify-content-center gap-sm-4">
-                <Form.Group className="w-100 mb-2">
-                  <Form.Label
-                    className="fw-semibold text-secondary"
-                    htmlFor="title"
-                  >
-                    Book Title
-                  </Form.Label>
-                  <InputGroup>
-                    <Form.Control
-                      type="text"
-                      name="title"
-                      value={book.title}
-                      onChange={handleChange}
-                      required
-                    />
-                  </InputGroup>
-                </Form.Group>
-
-                <Form.Group className="w-100 mb-2">
-                  <Form.Label
-                    className="fw-semibold text-secondary"
-                    htmlFor="author"
-                  >
-                    Author
-                  </Form.Label>
-                  <InputGroup>
-                    <Form.Control
-                      type="text"
-                      name="author"
-                      value={book.author}
-                      onChange={handleChange}
-                      required
-                    />
-                  </InputGroup>
-                </Form.Group>
-              </div>
-              <div className="d-flex flex-column flex-sm-row justify-content-center gap-sm-4">
-                <Form.Group className="mb-2 w-100">
-                  <Form.Label
-                    className="fw-semibold text-secondary"
-                    htmlFor="price"
-                  >
-                    Price
-                  </Form.Label>
-                  <InputGroup>
-                    <InputGroup.Text>$</InputGroup.Text>
-                    <Form.Control
-                      type="number"
-                      name="price"
-                      value={book.price}
-                      onChange={handleChange}
-                      required
-                    />
-                  </InputGroup>
-                </Form.Group>
-                <Form.Group className="mb-2 w-100">
-                  <Form.Label
-                    className="fw-semibold text-secondary"
-                    htmlFor="publishedDate"
-                  >
-                    Published Date
-                  </Form.Label>
-                  <InputGroup>
-                    <InputGroup.Text>
-                      <FaRegCalendarAlt />
-                    </InputGroup.Text>
-                    <Form.Control
-                      type="date"
-                      name="publishedDate"
-                      value={book.publishedDate}
-                      onChange={handleChange}
-                      required
-                    />
-                  </InputGroup>
-                </Form.Group>
-              </div>
-
-              <Form.Group className="mb-2">
-                <Form.Label
-                  className="fw-semibold text-secondary"
-                  htmlFor="overview"
-                >
-                  Overview
+          <Modal.Title>{bookId ? "Edit Book" : "Add New Book "}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          className="rounded border-0"
+          style={{ backgroundColor: "#f8fafc" }}
+        >
+          <Form onSubmit={handleSubmit}>
+            {!bookId && showAlert && (
+              <Alert
+                variant="danger"
+                onClose={() => setShowAlert(false)}
+                dismissible
+              >
+                Please fill all the input fields correctly.
+              </Alert>
+            )}
+            <div className="d-flex flex-column flex-sm-row justify-content-center gap-sm-4">
+              <Form.Group className="mb-2 w-100" controlId="formTitle">
+                <Form.Label className="fw-semibold text-secondary">
+                  Title
                 </Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    as="textarea"
-                    name="overview"
-                    value={book.overview}
-                    onChange={handleChange}
-                    required
-                  />
-                </InputGroup>
+                <Form.Control
+                  type="text"
+                  name="title"
+                  value={bookData.title}
+                  isInvalid={!bookId ? !!errors.title : ""}
+                  onChange={handleChange}
+                  //required
+                />
               </Form.Group>
-              <Form.Group className="mb-2">
-                <Form.Label
-                  className="fw-semibold text-secondary"
-                  htmlFor="description"
-                >
-                  Description
+              <Form.Group className="mb-2 w-100" controlId="formAuthor">
+                <Form.Label className="fw-semibold text-secondary">
+                  Author
                 </Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    as="textarea"
-                    name="description"
-                    value={book.description}
-                    onChange={handleChange}
-                    required
-                  />
-                </InputGroup>
+                <Form.Control
+                  type="text"
+                  name="author"
+                  value={bookData.author}
+                  isInvalid={!bookId ? !!errors.author : ""}
+                  onChange={handleChange}
+                  //required
+                />
               </Form.Group>
+            </div>
+            <div className="d-flex flex-column flex-sm-row justify-content-center gap-sm-4">
+              <Form.Group className="mb-2 w-100" controlId="formPrice">
+                <Form.Label className="fw-semibold text-secondary">
+                  Price
+                </Form.Label>
+                <Form.Control
+                  type="number"
+                  name="price"
+                  value={bookData.price}
+                  isInvalid={!bookId ? !!errors.price : ""}
+                  onChange={handleChange}
+                  //required
+                />
+              </Form.Group>
+              <Form.Group className="mb-2 w-100" controlId="formPublishedDate">
+                <Form.Label className="fw-semibold text-secondary">
+                  Published Date
+                </Form.Label>
+                <Form.Control
+                  type="date"
+                  name="publishedDate"
+                  value={bookData.publishedDate}
+                  isInvalid={!bookId ? !!errors.publishDate : ""}
+                  onChange={handleChange}
+                  //required
+                />
+              </Form.Group>
+            </div>
+            <Form.Group className="mb-2" controlId="formOverview">
+              <Form.Label className="fw-semibold text-secondary">
+                Overview
+              </Form.Label>
+              <Form.Control
+                as="textarea"
+                name="overview"
+                value={bookData.overview}
+                isInvalid={!bookId ? !!errors.overview : ""}
+                onChange={handleChange}
+                //required
+              />
+            </Form.Group>
+            <Form.Group className="mb-2" controlId="formDescription">
+              <Form.Label className="fw-semibold text-secondary">
+                Description
+              </Form.Label>
+              <Form.Control
+                as="textarea"
+                name="description"
+                value={bookData.description}
+                isInvalid={!bookId ? !!errors.description : ""}
+                onChange={handleChange}
+                //required
+              />
+            </Form.Group>
 
-              <div className="mt-4 text-center">
-                <Button variant="primary shadow" className="mx-5" type="submit">
-                  Update
-                </Button>
-                <Button
-                  variant="danger shadow"
-                  className="mx-5"
-                  onClick={onCancel}
-                >
-                  Cancel
-                </Button>
-              </div>
-            </Form>
-          </ModalBody>
-        </Modal>
-      )}
-    </div>
+            <div className="mt-4 text-center ">
+              <Button variant="primary shadow" className="mx-5 fw-semibold" type="submit">
+                {bookId ? "Update" : "Create"}
+              </Button>
+              <Button
+                variant="danger shadow"
+                className="mx-5 fw-semibold"
+                onClick={onCancel}
+              >
+                Cancel
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+      <ToastContainer position="top-end" className="p-3">
+        <Toast
+          bg="success"
+          show={showToast}
+          onClose={() => setShowToast(false)}
+          delay={3000}
+          autohide
+        >
+          <ToastHeader>
+            <strong className="me-auto">Notification</strong>
+          </ToastHeader>
+          <ToastBody className="text-white fw-semibold">
+            {toastMessage}
+          </ToastBody>
+        </Toast>
+      </ToastContainer>
+    </>
   );
-}
+};
 
 export default EditableForm;
