@@ -65,9 +65,11 @@ function Allbooks() {
         </Button>
       </div>
       {loading ? (
-        <Spinner animation="border" role="status">
+ <div className="text-center">
+         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
+ </div>
       ) : error ? (
         <Alert variant="danger">{error}</Alert>
       ) : (
